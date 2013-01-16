@@ -7,6 +7,7 @@
             position: 'left',
             triggerDistance: 100,
             bgColor: '#3BA7BF',
+            upText: 'To top'
         }
 
         function PageScroller(){
@@ -30,6 +31,7 @@
 
         PageScroller.prototype.check_cursor = function(ev){
             var x = ev.pageX, y = ev.pageY;
+            if (this.is_attop()) return;
             if (this['check_distance_' + this.options.position](x, y)){
                 this.show();
             } else {
@@ -46,10 +48,14 @@
                      this.options.triggerDistance)
         };
 
+        PageScroller.prototype.scroll_to_top = function(e){
+            $(window).scrollTop(0);
+            this.hide();
+        };
+
         PageScroller.prototype.hide = function(){
             if (!this.is_shown) return;
             this.$el.hide();
-            console.log('hiding now');
             this.is_shown = false;
         };
 
@@ -59,6 +65,10 @@
 
         PageScroller.prototype.set_pos_right = function() {
             this.$el.css({right: '0px'});
+        };
+
+        PageScroller.prototype.is_attop = function(){
+            return ($(window).scrollTop() == 0)
         };
 
         PageScroller.prototype.show = function(){
