@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Jquery.pagescroller by benizebe</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/benizebe/jquery.pagescroller">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Jquery.pagescroller</h1>
+            <h2>jQuery plugin for simple scrolling of large pages</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/benizebe/jquery.pagescroller/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/benizebe/jquery.pagescroller/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h2>jQuery PageScroller Plugin v0.1 documentation.</h2>
+
+<p>This PageScroller plugin will help you make scrolling large web pages less painful. It basically adds a custom clickable area to the left (or right) side of your page, which will scroll to the top or to the previous chapter of your page with just one click. It perfectly fits fixed layouts with long texts (e.g. books, articles, white papers, etc).</p>
+
+<h3>Usage.</h3>
+
+<p>First, download <a href="https://raw.github.com/benizebe/jquery.pagescroller/master/js/jquery.pagescroller.js">js</a> and <a href="https://raw.github.com/benizebe/jquery.pagescroller/master/css/jquery.pagescroller.css">css</a> and place them to the corresponding folders of your project. Then, add the following line to your html:</p>
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"path/to/jquery.pagescroller.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">src=</span><span class="s">"path/to/jquery.pagescroller.css"</span> <span class="nt">/&gt;</span>
+</pre></div>
+
+<p>To make everything work add the following lines to your javascript code:</p>
+
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">pagescroller</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="c1">//options is an optional argument</span>
+<span class="p">})</span>
+</pre></div>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/benizebe">benizebe</a> can be found on <a href="https://github.com/benizebe/jquery.pagescroller">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
