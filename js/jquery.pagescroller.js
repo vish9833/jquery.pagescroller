@@ -38,6 +38,7 @@
         PageScroller.prototype.init = function(options){
             this.options = $.extend(true, {}, defaults, options);
             this.setup();
+            this.chapters = $(this.options.chapters);
             this.element_prepared = false;
         };
 
@@ -61,7 +62,11 @@
         };
 
         PageScroller.prototype.scroll_to_top = function(e){
-            this.$window.scrollTop(0);
+            var point = 0;
+            if (this.next_chapter && this.next_chapter.length){
+                point = this.next_chapter.offset().top
+            }
+            this.$window.scrollTop(point);
             this.hide();
         };
 
@@ -109,6 +114,37 @@
             return txt;
         };
 
+        PageScroller.prototype.remove_title =function() {
+            this.next_chapter = null;
+            this.$el.removeAttr('title')
+        };
+
+        PageScroller.prototype.check_stops = function() {
+            /* TODO: give this a better name */
+            if (!this.chapters.length) {
+                return this.remove_title();
+            }
+            var chapter, is_first = false, self = this;
+            this.chapters.each(function(idx, el){
+                var $this = $(this);
+                if ($this.offset().top >= self.$window.scrollTop()){
+                    if (idx == 0) is_first = true;
+                    chapter = self.chapters.eq(idx - 1);
+                    return false;
+                }
+            });
+            if (is_first) {
+                /* need to scroll to the top of the page */
+                return this.remove_title();
+            }
+            this.next_chapter = chapter;
+            this.$el.attr('title', this.make_excerpt());
+        };
+
+        PageScroller.prototype.make_excerpt =function() {
+            return 'Go to ' + this.next_chapter.text().substr(0, 20) + '...';
+        };
+
         PageScroller.prototype.make_arrow_up =function(){
             var arr = $('<div class="arrow-up">'),
                 opts = this.options,
@@ -126,6 +162,7 @@
         PageScroller.prototype.show = function(){
             if (this.is_shown) return;
             this.prepare_element();
+            this.check_stops();
             this.$el.show();
             this.is_shown = true;
         };

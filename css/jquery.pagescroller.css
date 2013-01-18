@@ -2,10 +2,7 @@
     position:  fixed;
     top: 0px;
     bottom: 0px;
-}
-
-.scroller-container .scroll-top {
-
+    cursor: pointer;
 }
 
 .scroller-container .arrow-up {
