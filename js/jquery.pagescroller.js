@@ -15,7 +15,8 @@
 
         function PageScroller(){
             this.is_shown = false;
-            this.options = $.extend(true, {} , defaults);
+            this.check_scroll = $.proxy(this.check_scroll, this);
+            this.check_cursor = $.proxy(this.check_cursor, this);
         }
 
         PageScroller.prototype.setup = function(){
@@ -23,8 +24,8 @@
             this.$window = $(window);
             this.$container = $(document.body);
             this.$el = $('<div class="scroller-container">');
-            this.$container.mousemove($.proxy(this.check_cursor, this));
-            this.$window.scroll($.proxy(this.check_scroll, this));
+            this.$container.mousemove(this.check_cursor);
+            this.$window.scroll(this.check_scroll);
             this.$el.click($.proxy(this.scroll_to_top, this));
             this.$el.appendTo(document.body);
         };
@@ -165,6 +166,14 @@
             this.check_stops();
             this.$el.show();
             this.is_shown = true;
+        };
+
+        PageScroller.prototype.remove =function() {
+            if (!this.$el) return;
+            this.$el.remove();
+            this.$window.unbind('scroll', this.check_scroll);
+            this.$container.unbind('mousemove', this.check_cursor);
+            this.$el = null;
         };
 
         return PageScroller;
